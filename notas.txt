@@ -1,0 +1,2 @@
+namespace espacio determinado para almacenar clases, funciones y demás
+de tal forma que si tenemos otras funciones con los mismos nombres
