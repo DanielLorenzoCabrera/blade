@@ -1,9 +1,16 @@
 <?php
+
+
+
     require "vendor/autoload.php";
 
-    use eftec\bladeone\BladeOne;
+    Use eftec\bladeone\BladeOne; 
 
-    $blade = new BladeOne();
+    $views = __DIR__ . '/views';
+    $cache = __DIR__ . '/cache';// __DIR__ hace referencia al fichero actual
+
+    $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
+
 
     $posts = [
         ["id"=>1, "titulo" => "Procesador", "post" => "Datos del post", "fecha" => "1/1/90", "tags" => "memoria, procesador", "usuario" => "Jose"],
@@ -12,21 +19,14 @@
         ["id"=>4, "titulo" => "Procesador", "post" => "Datos del post", "fecha" => "1/1/90", "tags" => "memoria, procesador", "usuario" => "Jonay"]
     ];
 
-    $comentarios = [
-        ["id"=>1, "comentario" => "Me gusto mucho", "usuario" => "Jesus"],
-        ["id"=>2, "comentario" => "Me gusto mucho", "usuario" => "Ana"],
-        ["id"=>3, "comentario" => "Me gusto mucho", "usuario" => "Maria"],
-        ["id"=>4, "comentario" => "Me gusto mucho", "usuario" => "Ismael"],
-    ];
 
-    $comentarios = ["Hardware", "Software", "Java", "PHP"];
-
-    echo $blade->run("hello", [
-        "nombre" => "Jose e Irene",
+    /* Para llamar a la vista ejecutamos la funcion run. Se le pasa el nombre de la vista a lanzar y un array con los
+    datos a meter en la vista
+*/
+    echo $blade->run("blog",[
         "posts" => $posts,
-        "comentarios" => $comentarios,
-    ]
-    );
+        "title" => "Titulo de ejemplo"
+    ])
 
 
 
@@ -37,4 +37,4 @@
 
 
 
-    ?>
+?>
